@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 practice</title>
+    <style>
+      div.bar {
+        display: inline-block;
+        width: 20px;
+        height: 75px;
+        margin-right: 2px;
+        background-color: teal;
+      }
+    </style>
+
+    <script type="text/javascript" src="../d3.v7.min.js"></script>
+  </head>
+  <body>
+    <h1>D3 Practice. Scatterplot</h1>
+    <script>
+      let width = 500;
+      let height = 100;
+      let svg = d3
+        .select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+      let dataset = [
+        [5, 20],
+        [480, 90],
+        [250, 50],
+        [100, 33],
+        [330, 95],
+        [410, 12],
+        [475, 44],
+        [25, 67],
+        [85, 21],
+        [220, 88],
+      ];
+      let circles = svg
+        .selectAll("circle")
+        .data(dataset)
+        .enter()
+        .append("circle");
+      circles
+        .attr("cx", (d) => {
+          return d[0];
+        })
+        .attr("cy", (d) => {
+          return d[1];
+        })
+        .attr("r", 5);
+    </script>
+  </body>
+</html>

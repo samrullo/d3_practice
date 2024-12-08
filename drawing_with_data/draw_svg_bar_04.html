@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 practice</title>
+    <style>
+      div.bar {
+        display: inline-block;
+        width: 20px;
+        height: 75px;
+        margin-right: 2px;
+        background-color: teal;
+      }
+    </style>
+
+    <script type="text/javascript" src="../d3.v7.min.js"></script>
+  </head>
+  <body>
+    <h1>D3 Practice</h1>
+    <script>
+      let width = 500;
+      let height = 50;
+      let svg = d3
+        .select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+      let dataset = [];
+      for (let i = 0; i < 50; i++) {
+        dataset.push(Math.random() * 25);
+      }
+      let rectangles = svg
+        .selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect");
+
+      // to locate rectangles and set their width flexibly
+      let barPadding = 1;
+      rectangles
+        .attr("x", (d, i) => {
+          return (i * width) / dataset.length;
+        })
+        .attr("y", 0)
+        .attr("width", width / dataset.length - barPadding)
+        .attr("height", (d) => {
+          return d*2;
+        });
+    </script>
+  </body>
+</html>

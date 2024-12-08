@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 practice</title>
+    <script type="text/javascript" src="d3.v7.min.js"></script>
+  </head>
+  <body>
+    <h1>D3 Practice</h1>
+
+    <script>
+      d3.select("body").append("p").text("New paragraph!");
+      d3.csv("food.csv", (data) => {
+        console.log(data);
+      });
+    </script>
+  </body>
+</html>

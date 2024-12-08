@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 practice</title>
+    <script type="text/javascript" src="../d3.v7.min.js"></script>
+  </head>
+  <body>
+    <h1>D3 Practice</h1>
+
+    <script>
+      let dataset = [5, 10, 15, 20, 25];
+      /*
+      selects body DOM element
+      selects all paragraphs, this returns empty selection, think of it as all paragraphs that will be added into body
+      counts and parses dataset with data method. everything from this point onwards run number of times the length of dataset
+      to create new data-bound elements you must use enter(). This method looks at the current DOM selection, and then at the data 
+      being handed to it. if there are more data values than corresponding DOM elements, then enter() creates a new placeholder
+      element on which you can work your magic. it then hands off a reference to this new placeholder to the next step in the chain
+      append("p") takes the empty placeholder selection created by enter() and appends a p element into DOM. Then it hands off reference
+      to the element it just created to the next step in the chain.
+      text("some text") takes reference to the newly created p element and inserts a text value
+      */
+      d3.select("body")
+        .selectAll("p")
+        .data(dataset)
+        .enter()
+        .append("p")
+        .text((d) => {
+          return "I count up to " + d;
+        })
+        .style("color", (d) => {
+          if (d > 15) {
+            return "red";
+          } else {
+            return "black";
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 practice</title>
+    <style>
+      div.bar {
+        display: inline-block;
+        width: 20px;
+        height: 75px;
+        background-color: teal;
+      }
+    </style>
+
+    <script type="text/javascript" src="../d3.v7.min.js"></script>
+  </head>
+  <body>
+    <h1>D3 Practice</h1>
+    <script>
+      //this will draw 5 consecutive div elements next to each other with no margins all having the same height
+      let dataset = [5, 10, 15, 20, 25];
+      d3.select("body")
+        .selectAll("div")
+        .data(dataset)
+        .enter()
+        .append("div")
+        .attr("class", "bar");
+    </script>
+  </body>
+</html>
