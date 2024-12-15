@@ -120,3 +120,13 @@ You will see some circles are disappearing beyond borders.
 We can fix that by introducing padding and then settings ranges as ```.range([padding, w-padding])```
 But even after introducing padding text labels still get cut off on the right side.
 To fix that we can double padding for the right edge of the range ```.range([padding, w - 2*padding])```
+
+# Working with dates
+When plotting graphs very often you will have to work with a temporal data, i.e. date times. E.g. to plot stock prices across a period or to plot earch temperatures across years, or to plot company sales across dates.
+
+And very often temporal data is stored as a string of certain format such as MM/DD/YYYY. To apply scales on temporal data in d3, we need to convert string to Javascript ```Date``` object and for that we can use ```d3.timeParse``` function that returns yet another function which can be used to convert string to Date object.
+
+```javascript
+parseTime = d3.timeParse("%m/%d/%Y")
+thedate = parseTime("12/13/2024")
+```
